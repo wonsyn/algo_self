@@ -1,1 +1,1 @@
-# bj_algo
+# algo_self
