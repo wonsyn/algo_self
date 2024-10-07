@@ -1,9 +1,9 @@
-package bj_15653_N과M5;
+package bj_15654_N과M5;
 
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main2 {
     static int N, M;
     static int[] arr, num;
     static StringBuilder sb;
