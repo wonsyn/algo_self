@@ -14,18 +14,15 @@ public class Main{
 
         int[] dp = new int[N + 1];
         dp[1] = arr[1];
-        int max = dp[1];
         if(N >= 2) {
             dp[2] = arr[2] + dp[1];
-            max = dp[2];
         }
 
         for(int i = 3; i <= N; i++) {
             dp[i] = Math.max(dp[i - 1], Math.max(dp[i - 2], dp[i - 3] + arr[i - 1]) + arr[i]);
-            max = Math.max(max, dp[i]);
         }
 
-        System.out.println(max);
+        System.out.println(dp[N]);
         br.close();
     }
 }
