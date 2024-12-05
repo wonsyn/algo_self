@@ -20,7 +20,7 @@ public class Main{
             costs[i] = Integer.parseInt(st.nextToken());
         }
 
-        int cost = 0;
+        long cost = 0;
         for(int i = 0; i < N - 1; i++) {
             int add = 0;
             for(int j = i + 1; j < N - 1; j++) {
@@ -30,7 +30,7 @@ public class Main{
                 add++;
             }
             for(int j = 0; j <= add; j++) {
-                cost += costs[i] * distance[i + j];
+                cost += (long)costs[i] * distance[i + j];
             }
             i += add;
         }
