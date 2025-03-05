@@ -22,9 +22,11 @@ public class Main{
             list.add(new Ex(k, map.get(k)));
         }
         list.sort((o1, o2) -> o1.ex.compareTo(o2.ex));
+        StringBuilder sb = new StringBuilder();
         for(Ex ex : list) {
-            System.out.println(ex);
+            sb.append(ex).append("\n");
         }
+        System.out.println(sb);
         br.close();
     }
     static class Ex {
