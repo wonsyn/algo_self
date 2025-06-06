@@ -1,44 +1,35 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
-    public static boolean[] prime = new boolean[10001];
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-
-        get_prime();
 
         int T = Integer.parseInt(br.readLine());
 
-        while (T-- > 0) {
-            int n = Integer.parseInt(br.readLine());
-            int first_partition = n / 2;
-            int second_partition = n / 2;
-
-            while (true) {
-                if (!prime[first_partition] && !prime[second_partition]) {
-                    sb.append(first_partition).append(' ').append(second_partition).append('\n');
-                    break;
+        boolean[] arr = new boolean[10001];
+        for(int i = 2; i < 10001; i++) {
+            if(!arr[i]) {
+                for (int j = 2; i * j < 10001; j++) {
+                    arr[i * j] = true;
                 }
-                first_partition--;
-                second_partition++;
             }
         }
-        System.out.print(sb);
-    }
 
-    public static void get_prime() {
-        prime[0] = prime[1] = true;
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 2; i <= Math.sqrt(prime.length); i++) {
-            if (prime[i])
-                continue;
-            for (int j = i * i; j < prime.length; j += i) {
-                prime[j] = true;
+        for(int tc = 0; tc < T; tc++) {
+            int n = Integer.parseInt(br.readLine());
+
+            int n1 = n / 2, n2 = n / 2;
+
+            while(n1 + n2 != n || arr[n1] || arr[n2]) {
+                n1--; n2++;
             }
+            sb.append(n1).append(" ").append(n2).append("\n");
         }
+
+        System.out.println(sb);
     }
 }
