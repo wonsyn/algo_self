@@ -18,10 +18,12 @@ public class Main {
             int N = Integer.parseInt(br.readLine());
             StringTokenizer st = new StringTokenizer(br.readLine(), "[,]");
 
-            List<Integer> list = new ArrayList<>();
+            int[] arr = new int[N];
             for(int i = 0; i < N; i++) {
-                list.add(Integer.parseInt(st.nextToken()));
+                arr[i] = Integer.parseInt(st.nextToken());
             }
+            int l = 0;
+            int r = N - 1;
             boolean f = false;
 
             for(int i = 0; i < command.length(); i++) {
@@ -30,28 +32,28 @@ public class Main {
                 if (c == 'R') {
                     f = !f;
                 } else {
-                    if (list.size() == 0) {
+                    if (l > r) {
                         sb.append("error\n");
                         continue next;
                     } else {
-                        if (f) list.remove(list.size() - 1);
-                        else list.remove(0);
+                        if (f) r--;
+                        else l++;
                     }
                 }
             }
 
             sb.append("[");
             if(f) {
-                for(int i = list.size() - 1; i >= 0; i--) {
-                    sb.append(list.get(i)).append(",");
+                for(int i = r; i >= l; i--) {
+                    sb.append(arr[i]).append(",");
                 }
             } else {
-                for(int i = 0; i < list.size(); i++) {
-                    sb.append(list.get(i)).append(",");
+                for(int i = l; i <= r; i++) {
+                    sb.append(arr[i]).append(",");
                 }
             }
 
-            if(list.size() != 0) sb.setLength(sb.length() - 1);
+            if(l <= r) sb.setLength(sb.length() - 1);
             sb.append("]\n");
         }
 
