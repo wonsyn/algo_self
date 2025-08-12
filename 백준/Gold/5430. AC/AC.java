@@ -14,12 +14,10 @@ public class Main {
 
         next:
         for(int tc = 0; tc < T; tc++) {
-            StringBuilder temp = new StringBuilder();
             String command = br.readLine();
             int N = Integer.parseInt(br.readLine());
             StringTokenizer st = new StringTokenizer(br.readLine(), "[,]");
 
-            temp.append("[");
             List<Integer> list = new ArrayList<>();
             for(int i = 0; i < N; i++) {
                 list.add(Integer.parseInt(st.nextToken()));
@@ -42,19 +40,19 @@ public class Main {
                 }
             }
 
+            sb.append("[");
             if(f) {
                 for(int i = list.size() - 1; i >= 0; i--) {
-                    temp.append(list.get(i)).append(",");
+                    sb.append(list.get(i)).append(",");
                 }
             } else {
                 for(int i = 0; i < list.size(); i++) {
-                    temp.append(list.get(i)).append(",");
+                    sb.append(list.get(i)).append(",");
                 }
             }
 
-            if(list.size() != 0) temp.setLength(temp.length() - 1);
-            temp.append("]\n");
-            sb.append(temp);
+            if(list.size() != 0) sb.setLength(sb.length() - 1);
+            sb.append("]\n");
         }
 
         System.out.println(sb);
