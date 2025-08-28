@@ -23,17 +23,14 @@ public class Main {
         }
 
         st = new StringTokenizer(br.readLine());
-        int[] lec = new int[N];
-        for(int i = 0; i < N; i++) {
-            lec[i] = Integer.parseInt(st.nextToken());
-        }
 
         int cnt = 0;
+        int cur = find(Integer.parseInt(st.nextToken()));
         for(int j = 0; j < N - 1; j++) {
-            int cur = find(lec[j]);
-            int next = find(lec[j + 1]);
+            int next = find(Integer.parseInt(st.nextToken()));
 
             if(cur != next) cnt++;
+            cur = next;
         }
 
         System.out.println(cnt);
